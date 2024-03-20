@@ -1,31 +1,40 @@
 package com.example.graphiccrm;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import com.example.graphiccrm.dto.ClientDTO;
 import com.example.graphiccrm.service.ClientService;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HelloController {
     @FXML
     private TableView<ClientDTO> clientTable;
 
     @FXML
-    private TableColumn<ClientDTO, String> nameColumn;
+    TableColumn<ClientDTO, String> nameColumn = new TableColumn<>("Name");
 
     @FXML
-    private TableColumn<ClientDTO, String> emailColumn;
+    TableColumn<ClientDTO, String> emailColumn = new TableColumn<>("Email");
 
     @FXML
-    private TableColumn<ClientDTO, String> phoneColumn;
+    TableColumn<ClientDTO, String> phoneColumn = new TableColumn<>("Phone");
+
 
     @FXML
-    private TableColumn<ClientDTO, String> addressColumn;
+    TableColumn<ClientDTO, String> addressColumn = new TableColumn<>("Address");
 
     @FXML
-    private TableColumn<ClientDTO, String> clientTypeColumn;
+    TableColumn<ClientDTO, String> clientTypeColumn = new TableColumn<>("Client Type");
 
-    private final ClientService clientService;
+
+
+
+    private ClientService clientService;
 
     // Constructor
     public HelloController() {
@@ -35,14 +44,24 @@ public class HelloController {
     @FXML
     private void initialize() {
         // Initialize table columns
-        nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
-        emailColumn.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
-        phoneColumn.setCellValueFactory(cellData -> cellData.getValue().phoneProperty());
-        addressColumn.setCellValueFactory(cellData -> cellData.getValue().addressProperty());
-        clientTypeColumn.setCellValueFactory(cellData -> cellData.getValue().clientTypeProperty());
 
+
+        nameColumn.setCellValueFactory(new PropertyValueFactory<ClientDTO, String>("name"));
+
+        emailColumn.setCellValueFactory(new PropertyValueFactory<ClientDTO, String>("email"));
+
+        phoneColumn.setCellValueFactory(new PropertyValueFactory<ClientDTO, String>("phone"));
+
+        addressColumn.setCellValueFactory(new PropertyValueFactory<ClientDTO, String>("address"));
+
+        clientTypeColumn.setCellValueFactory(new PropertyValueFactory<ClientDTO, String>("clientType"));
+        // Add columns to the TableView
+        clientTable.getColumns().setAll(nameColumn, emailColumn, phoneColumn, addressColumn, clientTypeColumn);
         // Load client data into table
-        loadClientData();
+        //loadClientData();
+        List<ClientDTO> list = new ArrayList<>();
+        list.add(new ClientDTO("name" , "phone", "phone", "address", "clientType"));
+        clientTable.setItems(FXCollections.observableArrayList(list));
     }
 
     // Method to load client data into the table

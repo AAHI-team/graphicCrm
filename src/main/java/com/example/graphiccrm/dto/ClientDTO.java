@@ -4,79 +4,60 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class ClientDTO {
-    private final StringProperty name;
-    private final StringProperty email;
-    private final StringProperty phone;
-    private final StringProperty address;
-    private final StringProperty clientType;
+    String name;
+    private String email;
+    private String phone;
+    private String address;
+    private String clientType;
 
-    // Constructor
+
     public ClientDTO(String name, String email, String phone, String address, String clientType) {
-        this.name = new SimpleStringProperty(name);
-        this.email = new SimpleStringProperty(email);
-        this.phone = new SimpleStringProperty(phone);
-        this.address = new SimpleStringProperty(address);
-        this.clientType = new SimpleStringProperty(clientType);
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.clientType = clientType;
     }
 
     // Getters and setters
-    public String getName() {
-        return name.get();
-    }
 
-    public StringProperty nameProperty() {
+    public String getName() {
         return name;
     }
 
     public void setName(String name) {
-        this.name.set(name);
+        this.name = name;
     }
 
     public String getEmail() {
-        return email.get();
-    }
-
-    public StringProperty emailProperty() {
         return email;
     }
 
     public void setEmail(String email) {
-        this.email.set(email);
+        this.email = email;
     }
 
     public String getPhone() {
-        return phone.get();
-    }
-
-    public StringProperty phoneProperty() {
         return phone;
     }
 
     public void setPhone(String phone) {
-        this.phone.set(phone);
+        this.phone = phone;
     }
 
     public String getAddress() {
-        return address.get();
-    }
-
-    public StringProperty addressProperty() {
         return address;
     }
 
     public void setAddress(String address) {
-        this.address.set(address);
+        this.address = address;
     }
 
     public String getClientType() {
-        return clientType.get();
-    }
-
-    public StringProperty clientTypeProperty() {
         return clientType;
     }
 
     public void setClientType(String clientType) {
-        this.clientType.set(clientType);
+        this.clientType = clientType;
     }
 }
