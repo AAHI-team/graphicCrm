@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.TableColumn?>
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.graphiccrm.HelloController">
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+  </padding>
+
+  <TableView fx:id="clientTable" VBox.vgrow="ALWAYS">
+    <columns>
+      <TableColumn fx:id="nameColumn" text="Name" prefWidth="150"/>
+      <TableColumn fx:id="emailColumn" text="Email" prefWidth="200"/>
+      <TableColumn fx:id="phoneColumn" text="Phone" prefWidth="100"/>
+      <TableColumn fx:id="addressColumn" text="Address" prefWidth="200"/>
+      <TableColumn fx:id="clientTypeColumn" text="Client Type" prefWidth="100"/>
+    </columns>
+  </TableView>
+</VBox>
